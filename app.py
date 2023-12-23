@@ -9,6 +9,9 @@ import datefinder
 import re
 
 app = Flask(__name__)
+# Other codes
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
 
 UPLOAD_FOLDER = 'uploads'
 OUTPUT_FOLDER = 'outputs'
