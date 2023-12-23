@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 600px;
+            margin-top: 10px;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preview</h1>
+    
+    <h2>OCR Text:</h2>
+    <pre>{{ ocr_text }}</pre>
+
+    {% if extracted_data %}
+        <h2>Extracted Data:</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Particulars</th>
+                <th>Debit</th>
+                <th>Credit</th>
+                <th>Running Balance</th>
+            </tr>
+            {% for data_point in extracted_data %}
+                <tr>
+                    <td>{{ data_point["Date"] }}</td>
+                    <td>{{ data_point["Particulars"] }}</td>
+                    <td>{{ data_point["Debit"] }}</td>
+                    <td>{{ data_point["Credit"] }}</td>
+                    <td>{{ data_point["Running Balance"] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <form action="/download_excel" method="get">
+            <label for="agree">I agree to download the Excel file:</label>
+            <input type="checkbox" id="agree" name="agree" required>
+            <br>
+            <input type="submit" value="Download Excel">
+        </form>
+    {% endif %}
+</body>
+</html>

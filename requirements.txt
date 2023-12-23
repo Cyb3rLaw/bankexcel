@@ -1,0 +1,13 @@
+Flask==2.1.4
+pdf2xlsx==0.2.3
+pillow==8.3.2
+pytesseract==0.3.8
+spacy==3.1.3
+datefinder==1.0.0
+gunicorn==20.1.0
+pdf2xlsx==0.3.0
+Pillow==8.4.0
+pytesseract==0.3.8
+spacy==3.1.4
+datefinder==1.0.1
+pandas==1.3.3
